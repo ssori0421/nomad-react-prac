@@ -7,22 +7,29 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    const root = document.getElementById("root")
     function App () {
-      const [counter, setCounter] = React.useState(0);
-      cocnst onClick = () => {
-        // setCounter(counter + 1);
-        setCounter((current) => current + 1);
+      const [minutes, setMinutes] = React.useState()
+      const onChange = (event) => {
+        setMinutes(event.target.value);
       };
-      console.log("rendered");
-      console.log(counter);
       return (
         <div>
-          <h3>Total clicks: {counter}</h3>  
-          <button onClick={onClick}>Click me</button>
+          <h1 className="hi">Super Converter</h1> 
+          <label htmlFor="minute">Minutes</label>
+          <input 
+            value={minutes} 
+            id="minutess" 
+            placeholder="Minutes" 
+            type="number" 
+            onChange={onChange} //리스너=> input에 변화가 생기면 onChange함수를 실행시켜줄거야
+          /> 
+          <h4> You want to convert {minutes}</h4>
+          <label htmlFor="hours">Hours</label>
+          <input id="hours" placeholder="Hours" type="number" />
         </div>
       );
     }
+    const root = document.getElementById("root")
     ReactDOM.render(<App />, root);
   </script>
 </html>
